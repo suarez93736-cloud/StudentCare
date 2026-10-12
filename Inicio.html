@@ -1,0 +1,965 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudentCare - Inicio</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            background: #1b3335;
+        }
+
+
+    
+        .fondo {
+            position: fixed;
+            top: -20px;
+            left: -20px;
+
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+
+            background-image: url("colegio.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            filter: blur(5px);
+
+            z-index: -2;
+        }
+
+        .fondo::after {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.40);
+        }
+
+
+     
+
+        .navbar {
+            position: fixed;
+
+            top: 20px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 90%;
+            max-width: 1150px;
+
+            height: 70px;
+
+            border-radius: 50px;
+
+            background: rgba(255, 255, 255, 0.18);
+
+            border: 1px solid rgba(255, 255, 255, 0.35);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 25px;
+
+            z-index: 1000;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            font-size: 21px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #7de0d3;
+        }
+
+
+
+        .menu {
+            display: flex;
+
+            gap: 5px;
+        }
+
+        .menu a {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            padding: 12px 18px;
+
+            border-radius: 30px;
+
+            transition: 0.3s;
+        }
+
+        .menu a:hover,
+        .menu a.activo {
+            background: rgba(255, 255, 255, 0.20);
+        }
+
+
+    
+
+        .inicio {
+            min-height: 100vh;
+
+            padding: 140px 8% 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 50px;
+
+            flex-wrap: wrap;
+        }
+
+
+
+        .cuadro-texto {
+            width: 600px;
+
+            padding: 50px;
+
+            border-radius: 30px;
+
+            background: rgba(255, 255, 255, 0.16);
+
+            border: 1px solid rgba(255, 255, 255, 0.30);
+
+            backdrop-filter: blur(15px);
+
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+        }
+
+
+        .etiqueta {
+            font-size: 14px;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+            color: #8be4d9;
+
+            margin-bottom: 20px;
+        }
+
+
+        h1 {
+            font-size: clamp(42px, 5vw, 70px);
+
+            line-height: 1.05;
+
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            color: #79ded2;
+        }
+
+
+        .descripcion {
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            color: rgba(255, 255, 255, 0.90);
+
+            margin-bottom: 30px;
+        }
+
+
+       
+        .boton-principal:hover {
+            transform: translateY(-3px);
+
+            background: #4fc0b3;
+        }
+
+
+
+
+        .cuadro-imagen {
+            width: 400px;
+
+            height: 450px;
+
+            padding: 10px;
+
+            border-radius: 30px;
+
+            background: rgba(255, 255, 255, 0.14);
+
+            border: 1px solid rgba(255, 255, 255, 0.30);
+
+            backdrop-filter: blur(15px);
+
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+        }
+
+
+        .cuadro-imagen img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius: 23px;
+        }
+
+
+
+
+        .seccion-videos {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 40px 0 100px;
+
+            text-align: center;
+        }
+
+
+        .seccion-videos h2 {
+
+            color: white;
+
+            font-size: 35px;
+
+            margin-bottom: 40px;
+        }
+
+
+
+        .contenedor-videos {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 30px;
+
+            justify-content: center;
+        }
+
+
+    
+        .cuadro-video {
+
+            background: rgba(255, 255, 255, 0.15);
+
+            border: 1px solid rgba(255, 255, 255, 0.30);
+
+            border-radius: 25px;
+
+            padding: 12px;
+
+            backdrop-filter: blur(15px);
+
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+
+            transition: 0.3s;
+
+            text-align: left;
+        }
+
+
+        .cuadro-video:hover {
+
+            transform: translateY(-8px);
+
+            background: rgba(255, 255, 255, 0.20);
+        }
+
+
+    
+
+        .cuadro-video video {
+
+            width: 100%;
+
+            height: 190px;
+
+            object-fit: cover;
+
+            display: block;
+
+            border-radius: 18px;
+        }
+
+
+      
+
+        .texto-video {
+
+            padding: 18px 10px 10px;
+
+            text-align: left;
+        }
+
+
+        .texto-video h3 {
+
+            color: #7de0d3;
+
+            font-size: 20px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .texto-video p {
+
+            color: rgba(255, 255, 255, 0.90);
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+		
+       .footer { 
+          width: 100%; margin-top: 60px; 
+        padding: 25px 20px; 
+      text-align: center; 
+	  background: rgba(255, 255, 255, 0.15); 
+	  border-top: 1px solid rgba(255, 255, 255, 0.30);
+	  backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); 
+	  color: white; box-sizing: border-box; 
+	
+	  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
+	  } 
+	  
+	  .footer p { margin: 6px 0; font-size: 15px;
+	  } 
+	  
+	  .footer strong { font-weight: 600; }
+	  
+	  
+    .cuadros-inicio { 
+      width: 90%; max-width: 1200px;
+
+       margin: 20px auto 60px; display: grid; 
+	   
+        grid-template-columns: repeat(3, 1fr); 
+		gap: 30px; 
+		} 
+		
+		.cuadro-informacion {
+		min-height: 220px; padding: 30px; 
+		background: rgba(255, 255, 255, 0.16); 
+		border: 1px solid rgba(255, 255, 255, 0.30);
+		border-radius: 25px; backdrop-filter: blur(15px);
+		-webkit-backdrop-filter: blur(15px);
+		box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); color: white;
+		text-align: center; transition: 0.3s;
+		} 
+		
+		.cuadro-informacion:hover { 
+		transform: translateY(-8px);
+		background: rgba(255, 255, 255, 0.22);
+		} 
+		
+		.icono { 
+		font-size: 40px;
+		margin-bottom: 10px;
+		} 
+		
+	.cuadro-informacion h2 { 
+	color: #7de0d3;
+	font-size: 22px; 
+	margin-bottom: 15px;
+	
+	} 
+	
+	.cuadro-informacion p {
+	font-size: 15px;
+	line-height: 1.6; 
+	color: rgba(255, 255, 255, 0.90);
+	}
+
+        
+
+        @media (max-width: 1000px) {
+
+            .inicio {
+
+                flex-direction: column;
+
+                padding-top: 130px;
+            }
+
+
+            .cuadro-texto {
+
+                width: 90%;
+
+                max-width: 650px;
+            }
+
+
+            .cuadro-imagen {
+
+                width: 90%;
+
+                max-width: 500px;
+
+                height: 400px;
+            }
+
+
+            .contenedor-videos {
+
+                grid-template-columns: repeat(2, 1fr);
+            }
+			.cuadros-inicio { 
+			grid-template-columns: repeat(2, 1fr);
+			}
+        }
+
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+        position: fixed;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 96%;
+        height: auto;
+        padding: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+
+        z-index: 1000;
+    }
+
+    
+    .logo {
+        width: 100%;
+        padding: 19px 5px;
+        text-align: center;
+
+        font-size: 20px;
+        letter-spacing: 2px;
+
+        background: rgba(255, 255, 255, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.40);
+        border-radius: 40px;
+
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
+
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+
+        width: 100%;
+        padding: 4px 3px;
+        gap: 0;
+
+        background: rgba(75, 68, 68, 0.82);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 35px;
+
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
+
+
+    .menu a {
+        display: block;
+        padding: 11px 6px;
+
+        font-size: 10px;
+        text-align: center;
+        white-space: nowrap;
+
+        border-radius: 25px;
+    }
+
+    .menu a:hover,
+    .menu a.activo {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    
+    .inicio {
+        padding: 150px 20px 50px;
+    }
+
+    .cuadro-texto {
+        width: 100%;
+        padding: 35px 25px;
+    }
+
+    h1 {
+        font-size: 45px;
+    }
+
+    .descripcion {
+        font-size: 15px;
+    }
+
+    .cuadro-imagen {
+        width: 100%;
+        height: 350px;
+    }
+
+
+    .contenedor-videos {
+        grid-template-columns: 1fr;
+    }
+
+    .cuadro-video video {
+        height: 210px;
+    }
+
+    .cuadros-inicio {
+        grid-template-columns: 1fr;
+    }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    
+
+    <div class="fondo"></div>
+
+
+
+
+    <header class="navbar">
+
+        <div class="logo">
+            STUDENT<span>CARE</span>
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="inicio.html" class="activo">
+                Inicio
+            </a>
+
+            <a href="sobrenosotros.html">
+                Sobre Nosotros
+            </a>
+
+            <a href="servicios.html">
+                Servicios
+            </a>
+
+            <a href="contactos.html">
+                Contactos
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+
+     
+       
+
+        <section class="inicio">
+
+
+            
+
+            <div class="cuadro-texto">
+
+                <div class="etiqueta">
+                    BIENVENIDO A STUDENTCARE
+                </div>
+
+
+                <h1>
+
+                    Un espacio creado
+
+                    <span>
+                        para ti.
+                    </span>
+
+                </h1>
+
+
+                <p class="descripcion">
+
+                    Un espacio donde puedes aprender,
+                    expresarte y encontrar apoyo.
+
+                    StudentCare está pensado para acompañarte
+                    en tu vida estudiantil.
+
+                </p>
+
+
+
+
+            </div>
+
+
+      
+
+            <div class="cuadro-imagen">
+
+                <img
+                    src="Estudiantes.jpg"
+                    alt="Estudiantes"
+                >
+
+            </div>
+
+
+        </section>
+		<section class="cuadros-inicio"> 
+		<div class="cuadro-informacion">
+		<div class="icono">📚</div>
+		<h2>¿Que es StudentCare ?</h2> 
+		<p> StudentCare es un prototipo de página web diseñada por un grupo de estudiantes  para brindar acompañamiento y orientación a estudiantes y comunidad que necesiten apoyo durante su vida académica o que este pasando por un mal momento .La plataforma busca ofrecer un espacio donde los estudiantes puedan encontrar información, recursos y herramientas que les permitan expresar sus necesidades y conocer diferentes opciones de ayuda.  </p> 
+		<br>
+		<p> Estamos para ayudarte, No estas sol@ </p>
+		</div> 
+		
+		<div class="cuadro-informacion"> 
+		<div class="icono"></div> 
+		<h2>Nuestro objetivo
+		</h2> 
+		<p>  Nuestro objetivo es brindar a los estudiantes un espacio seguro, informativo y fácil de utilizar, donde puedan encontrar recursos relacionados con el bienestar emocional, la orientación y el desarrollo personal.
+		</p> 
+		</div> 
+		<div class="cuadro-informacion"> 
+		<div class="icono">🧠</div>
+		<h2>Conócete mejor</h2> 
+		
+		<p> Conocerte es el primer paso para comprender lo que sientes. Explora nuestros recursos y tests de orientación para reflexionar sobre tus emociones, pensamientos y experiencias.</p> 
+		
+		</div> 
+		
+		<div class="cuadro-informacion">
+		
+		
+		<div class="icono">❤️</div>
+		
+		<h2>Cuida tu bienestar</h2> 
+		
+		
+		<p> El bienestar también forma parte de la vida estudiantil. Dedica tiempo para ti, reconoce tus emociones y recuerda que pedir ayuda cuando la necesitas también es una forma de cuidarte.
+		
+		</p> 
+		
+		</div> 
+		
+		<div class="cuadro-informacion">
+		
+		<div class="icono">🤝</div> 
+		
+		<h2>No estás solo</h2>
+		
+		<p>En la vida escolar pueden existir momentos difíciles. Hablar con una persona de confianza, un docente, un familiar o un profesional puede ayudarte a encontrar nuevas formas de afrontar una situación.
+		</p>
+		
+		</div>
+		
+		<div class="cuadro-informacion"> 
+		
+		<div class="icono">🌟</div> 
+		
+		<h2>¿Porque es importante?</h2> 
+		
+		<p> En StudentCare creemos que el bienestar emocional es tan importante como el aprendizaje académico. La psicología en el colegio permite comprender las necesidades de los estudiantes, brindar orientación y ayudarlos a afrontar los desafíos de la vida escolar.
+
+Por eso, es fundamental contar con espacios donde cada estudiante pueda expresarse libremente, compartir sus preocupaciones y encontrar acompañamiento sin temor a ser juzgado. Estos espacios promueven la confianza, la empatía, el respeto y una convivencia escolar más saludable.
+
+Recuerda: no tienes que enfrentar todo por tu cuenta. Pedir ayuda es un acto de valentía y tu bienestar siempre importa.</p>
+		
+		</div> 
+		
+		</section>
+
+
+        
+
+        <section class="seccion-videos">
+
+
+            <h2>
+                Entrevistas 
+            </h2>
+
+
+            <div class="contenedor-videos">
+
+
+                <div class="cuadro-video">
+
+                    <video controls>
+
+                        <source
+                            src="VIDEOS/video1.mp4"
+                            type="video/mp4"
+                        >
+
+              
+
+                    </video>
+
+
+                    <div class="texto-video">
+
+                        <h3>
+                            profe 1
+                        </h3>
+
+                        
+                    </div>
+
+                </div>
+
+
+               
+
+                <div class="cuadro-video">
+
+                    <video controls>
+
+                        <source
+                            src="VIDEOS/video2.mp4"
+                            type="video/mp4"
+                        >
+
+                        
+
+                    </video>
+
+
+                    <div class="texto-video">
+
+                        <h3>
+                            profe2
+                        </h3>
+
+                       
+
+                    </div>
+
+                </div>
+
+
+                
+
+                <div class="cuadro-video">
+
+                    <video controls>
+
+                        <source
+                            src="VIDEOS/video3.mp4"
+                            type="video/mp4"
+                        >
+
+                        
+                    </video>
+
+
+                    <div class="texto-video">
+
+                        <h3>
+                            profe3
+                        </h3>
+
+                       
+
+                    </div>
+
+                </div>
+
+
+                
+
+                <div class="cuadro-video">
+
+                    <video controls>
+
+                        <source
+                            src="VIDEOS/video4.mp4"
+                            type="video/mp4"
+                        >
+
+                        Tu navegador no puede reproducir este video.
+
+                    </video>
+
+
+                    <div class="texto-video">
+
+                        <h3>
+                            profe4
+                        </h3>
+
+                      
+                    </div>
+
+                </div>
+
+
+               
+
+                <div class="cuadro-video">
+
+                    <video controls>
+
+                        <source
+                            src="VIDEOS/video5.mp4"
+                            type="video/mp4"
+                        >
+
+                      
+                    </video>
+
+
+                    <div class="texto-video">
+
+                        <h3>
+                            profe5
+                        </h3>
+
+                       
+                    </div>
+
+                </div>
+
+
+                
+
+                <div class="cuadro-video">
+
+                    <video controls>
+
+                        <source
+                            src="VIDEOS/video6.mp4"
+                            type="video/mp4"
+                        >
+
+                        
+                    </video>
+
+
+                    <div class="texto-video">
+
+                        <h3>
+profe6
+                        </h3>
+
+                        
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+<footer class="footer">
+        <p>© StudentCare.com 2027</p>
+        <p>Desarrollado por: <strong>David Marcillo</strong> 
+		 <strong>Daiana Bolaños</strong> 
+		 <strong>Danna Garzon</strong>
+		 <strong>Juan Pulido </strong>
+		 
+		 </p>
+    </footer>
+
+</body>
+
+</html>

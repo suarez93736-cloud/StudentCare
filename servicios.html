@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Servicios - StudentCare</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            color: white;
+
+            overflow-x: hidden;
+
+            background: #1b3335;
+        }
+
+
+        .fondo {
+
+            position: fixed;
+
+            top: -20px;
+            left: -20px;
+
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+
+            background-image:
+                url("IMAGENES/COLIBRI_OSCURO.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-repeat: no-repeat;
+
+            filter: blur(5px);
+
+            z-index: -2;
+        }
+
+
+        .fondo::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.40);
+        }
+
+
+
+        .navbar-container {
+
+            position: fixed;
+
+            top: 20px;
+
+            left: 0;
+            right: 0;
+
+            display: flex;
+
+            justify-content: center;
+
+            z-index: 1000;
+
+            padding: 0 20px;
+        }
+
+
+        .navbar {
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            background: rgba(255, 255, 255, 0.18);
+
+            backdrop-filter: blur(15px);
+
+            -webkit-backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.30);
+
+            border-radius: 50px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 10px 30px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.25);
+        }
+
+
+
+        .logo {
+
+            font-weight: 800;
+
+            font-size: 22px;
+
+            letter-spacing: 2px;
+
+            color: white;
+        }
+
+
+        .logo span {
+
+            color: #6ee7b7;
+        }
+
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+        }
+
+
+        .nav-links a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            padding: 12px 18px;
+
+            border-radius: 30px;
+
+            transition: 0.3s;
+        }
+
+
+        .nav-links a:hover,
+
+        .nav-links a.active {
+
+            background:
+                rgba(255, 255, 255, 0.20);
+        }
+
+
+
+        main {
+
+            min-height: 100vh;
+
+            padding: 150px 30px 80px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+        }
+
+
+   
+
+        .titulo-principal {
+
+            text-align: center;
+
+            margin-bottom: 55px;
+        }
+
+
+        .titulo-principal h1 {
+
+            font-size: clamp(45px, 6vw, 70px);
+
+            margin-bottom: 15px;
+        }
+
+
+        .titulo-principal h1 span {
+
+            color: #79ded2;
+        }
+
+
+        .titulo-principal p {
+
+            font-size: 17px;
+
+            color:
+                rgba(255, 255, 255, 0.85);
+
+            max-width: 650px;
+
+            line-height: 1.6;
+
+            margin: auto;
+        }
+
+
+
+        .servicio-principal {
+
+            width: 90%;
+
+            max-width: 850px;
+
+            padding: 40px;
+
+            margin-bottom: 70px;
+
+            text-align: center;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255, 255, 255, 0.16);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.30);
+
+            backdrop-filter: blur(15px);
+
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, 0.25);
+
+            transition: 0.3s;
+        }
+
+
+        .servicio-principal:hover {
+
+            transform: translateY(-5px);
+
+            background:
+                rgba(255, 255, 255, 0.20);
+        }
+
+
+        .icono {
+
+            font-size: 50px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .servicio-principal h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 15px;
+
+            color: #79ded2;
+        }
+
+
+        .servicio-principal p {
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            color:
+                rgba(255, 255, 255, 0.90);
+
+            max-width: 600px;
+
+            margin: 0 auto 25px;
+        }
+
+
+       
+
+        .titulo-test {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+
+        .titulo-test h2 {
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .titulo-test p {
+
+            font-size: 16px;
+
+            color:
+                rgba(255, 255, 255, 0.85);
+        }
+
+
+     
+
+        .contenedor-servicios {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 30px;
+
+            margin-bottom: 40px;
+        }
+
+
+        
+
+        .tarjeta-servicio {
+
+            min-height: 330px;
+
+            padding: 30px 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            text-align: center;
+
+            border-radius: 25px;
+
+            background:
+                rgba(255, 255, 255, 0.15);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.30);
+
+            backdrop-filter: blur(15px);
+
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.25);
+
+            transition: 0.3s;
+        }
+
+
+        .tarjeta-servicio:hover {
+
+            transform: translateY(-8px);
+
+            background:
+                rgba(255, 255, 255, 0.22);
+
+            box-shadow:
+                0 20px 45px rgba(0, 0, 0, 0.35);
+        }
+
+
+       
+        .tarjeta-icono {
+
+            font-size: 45px;
+
+            margin-bottom: 15px;
+        }
+
+
+
+        .tarjeta-servicio h3 {
+
+            font-size: 20px;
+
+            color: #79ded2;
+
+            margin-bottom: 15px;
+        }
+
+
+
+
+        .tarjeta-servicio p {
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            color:
+                rgba(255, 255, 255, 0.88);
+
+            margin-bottom: 25px;
+        }
+
+
+        .boton {
+
+            display: inline-block;
+
+            width: 100%;
+
+            padding: 14px 18px;
+
+            background:
+                rgba(255, 255, 255, 0.18);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.30);
+
+            color: white;
+
+            text-decoration: none;
+
+            text-align: center;
+
+            border-radius: 30px;
+
+            backdrop-filter: blur(10px);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            transition: 0.3s;
+
+            font-weight: bold;
+        }
+
+
+        .boton:hover {
+
+            background: #65d3c6;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+
+    
+
+        @media (max-width: 900px) {
+
+            .contenedor-servicios {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                width: 94%;
+
+                padding: 10px 15px;
+
+                justify-content: center;
+            }
+
+
+            .logo {
+
+                display: none;
+            }
+
+
+            .nav-links {
+
+                gap: 0;
+            }
+
+
+            .nav-links a {
+
+                font-size: 11px;
+
+                padding: 10px 9px;
+            }
+
+
+            main {
+
+                padding:
+                    120px 15px 50px;
+            }
+
+
+            .titulo-principal {
+
+                margin-bottom: 40px;
+            }
+
+
+            .titulo-principal h1 {
+
+                font-size: 45px;
+            }
+
+
+            .servicio-principal {
+
+                width: 100%;
+
+                padding: 30px 20px;
+
+                margin-bottom: 50px;
+            }
+
+
+            .servicio-principal h2 {
+
+                font-size: 25px;
+            }
+
+
+            .contenedor-servicios {
+
+                width: 100%;
+
+                grid-template-columns: 1fr;
+
+                gap: 20px;
+            }
+
+
+            .tarjeta-servicio {
+
+                min-height: 300px;
+            }
+
+
+            .titulo-test h2 {
+
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+
+    <div class="fondo"></div>
+
+
+  
+    <div class="navbar-container">
+
+        <header class="navbar">
+
+            <div class="logo">
+
+                STUDENT<span>CARE</span>
+
+            </div>
+
+
+            <nav class="nav-links">
+
+                <a href="Inicio.html">
+                    Inicio
+                </a>
+
+                <a href="sobrenosotros.html">
+                    Sobre Nosotros
+                </a>
+
+                <a href="servicios.html"
+                   class="active">
+                    Servicios
+                </a>
+
+                <a href="contactos.html">
+                    Contactos
+                </a>
+
+            </nav>
+
+        </header>
+
+    </div>
+
+
+
+
+    <main>
+
+
+
+        <div class="titulo-principal">
+
+            <h1>
+                <span>Servicios</span>
+            </h1>
+
+            <p>
+                Encuentra herramientas y recursos que
+                pueden acompañarte durante tu vida
+                estudiantil.
+            </p>
+
+        </div>
+
+
+ 
+        <div class="servicio-principal">
+
+
+            <div class="icono">
+                🤖
+            </div>
+
+
+            <h2>
+                Tu IA psicóloga
+            </h2>
+
+
+            <p>
+                Herramienta de apoyo emocional que
+                puedes utilizar para expresar tus
+                pensamientos y encontrar orientación.
+            </p>
+
+
+            <a
+                href="https://app.psicologoia.ai/login"
+                target="_blank"
+                class="boton">
+
+                🧠 Abrir Psicólogo IA
+
+            </a>
+
+
+        </div>
+
+
+   
+
+        <div class="titulo-test">
+
+            <h2>
+                Tests de orientación
+            </h2>
+
+            <p>
+                Herramientas que pueden ayudarte a
+                conocer y comprender mejor tus emociones.
+            </p>
+
+        </div>
+
+
+      
+        <div class="contenedor-servicios">
+
+
+          
+
+            <div class="tarjeta-servicio">
+
+
+                <div>
+
+                    <div class="tarjeta-icono">
+                        🧠
+                    </div>
+
+
+                    <h3>
+                        Test de salud mental
+                    </h3>
+
+
+                    <p>
+                        Realiza un cuestionario que puede
+                        ayudarte a conocer algunos aspectos
+                        relacionados con tu bienestar emocional.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="https://screening.mhanational.org/"
+                    target="_blank"
+                    class="boton">
+
+                    Realizar test
+
+                </a>
+
+            </div>
+
+
+            
+
+            <div class="tarjeta-servicio">
+
+
+                <div>
+
+                    <div class="tarjeta-icono">
+                        ❤️
+                    </div>
+
+
+                    <h3>
+                        Reconoce tus emociones
+                    </h3>
+
+
+                    <p>
+                        Descubre qué tan bien puedes
+                        identificar y reconocer diferentes
+                        emociones.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="https://www.psicoactiva.com/test/sabes-reconocer-tus-emociones.htm"
+                    target="_blank"
+                    class="boton">
+
+                    Realizar test
+
+                </a>
+
+            </div>
+
+
+        
+            <div class="tarjeta-servicio">
+
+
+                <div>
+
+                    <div class="tarjeta-icono">
+                        😊
+                    </div>
+
+
+                    <h3>
+                        ¿Qué emoción soy?
+                    </h3>
+
+
+                    <p>
+                        Explora diferentes emociones mediante
+                        este cuestionario interactivo.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="https://quizpanda.com/es/what-emotion-am-i/"
+                    target="_blank"
+                    class="boton">
+
+                    Realizar test
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>
+
